@@ -61,9 +61,10 @@ describe( 'validate', function tests() {
 			assert.isTrue( err instanceof TypeError );
 		}
 	});
-it( 'should return an error if provided a non-numeric `b` parameter', function test() {
+it( 'should return an error if provided a non-numeric `b` parameter or a `b` not greater than `a`', function test() {
 		var values, err;
 		 values = [
+			-1,
 			'5',
 			[],
 			true,
@@ -81,9 +82,11 @@ it( 'should return an error if provided a non-numeric `b` parameter', function t
 			assert.isTrue( err instanceof TypeError );
 		}
 	});
-it( 'should return an error if provided a non-numeric `c` parameter', function test() {
+it( 'should return an error if provided a non-numeric `c` parameter or a `c` not in the inerval [ a, b ]', function test() {
 		var values, err;
 		 values = [
+			-1,
+			2,
 			'5',
 			[],
 			true,

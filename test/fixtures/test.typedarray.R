@@ -2,9 +2,9 @@ options( digits = 16 )
 library( jsonlite )
 
 
-a = 0
-b = 1
-c = 0.5
+a = -500
+b = 500
+c = -300
 x = seq( -1000, 1000, 0.5 )
 y = dtriangle( x, a,b,c )
 

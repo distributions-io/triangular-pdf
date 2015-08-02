@@ -1,9 +1,10 @@
 options( digits = 16 )
 library( jsonlite )
+library( triangle )
 
-a = 0
-b = 1
-c = 0.5
+a = -25
+b = 25
+c = 0
 x = 0:24
 y = dtriangle( x, a,b,c )
 

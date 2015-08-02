@@ -1,10 +1,10 @@
 options( digits = 16 )
 library( jsonlite )
+library( triangle )
 
-
-a = 0
-b = 1
-c = 0.5
+a = 10
+b = 20
+c = 13
 x = seq( -1000, 1000, 0.5 )
 y = dtriangle( x, a,b,c )
 
