@@ -79,14 +79,14 @@ The function accepts the following `options`:
 
 *	__a__: lower limit. Default: `0`.
 *	__b__: upper limit. Default: `1`.
-*	__c__: mode. Default: `0.5`.
+*	__c__: mode. Default: `( a + b ) / 2`.
 * 	__accessor__: accessor `function` for accessing `array` values.
 * 	__dtype__: output [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays) or [`matrix`](https://github.com/dstructs/matrix) data type. Default: `float64`.
 *	__copy__: `boolean` indicating if the `function` should return a new data structure. Default: `true`.
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Triangular](https://en.wikipedia.org/wiki/Triangular_distribution) distribution is a function of 3 parameters: `a`(lower limit), `b`(upper limit) and `c`(mode). By default, `a` is equal to `0` and `b` is equal to `1` and `c` is equal to `0.5`. To adjust either parameter, set the corresponding option.
+A [Triangular](https://en.wikipedia.org/wiki/Triangular_distribution) distribution is a function of three parameters: `a`(lower limit), `b`(upper limit) and `c`(mode). By default, `a` is equal to `0`, `b` is equal to `1` and `c` is equal to `(a + b) / 2 = 0.5`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
