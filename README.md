@@ -385,7 +385,7 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/triangular-pdf/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/triangular-pdf
 
-[codecov-image]: https://img.shields.io/codecov/github/distributions-io/triangular-pdf/master.svg
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/triangular-pdf/master.svg
 [codecov-url]: https://codecov.io/github/distributions-io/triangular-pdf?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/triangular-pdf.svg
