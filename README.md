@@ -6,8 +6,8 @@ Probability Density Function
 
 The [probability density function](https://en.wikipedia.org/wiki/Probability_density_function) (PDF) for a [Triangular](https://en.wikipedia.org/wiki/Triangular_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:pdf_function">
-	<img src="" alt="Probability density function (PDF) for a Triangular distribution.">
+<div class="equation" align="center" data-raw-text="f(x;a,b,c)=\begin{cases} 0 &amp; \text{for } x < a \\ \frac{2(x-a)}{(b-a)(c-a)} &amp; \text{for } a \le x < c \\ \frac{2}{b-a} &amp; \text{for } x = c \\ \frac{2(b-x)}{(b-a)(b-c)} &amp; \text{for } c < x \le b \\ 0 & \text{for } b < x \end{cases} " data-equation="eq:pdf_function">
+	<img src="https://cdn.rawgit.com/distributions-io/triangular-pdf/7110a4d870a846c6c4daebb3834fae20d1b8d88a/docs/img/eqn.svg" alt="Probability density function (PDF) for a Triangular distribution.">
 	<br>
 </div>
 
@@ -39,36 +39,39 @@ var matrix = require( 'dstructs-matrix' ),
 	x,
 	i;
 
-out = pdf( 1 );
-// returns
+out = pdf( 0.5 );
+// returns 2
 
 out = pdf( -1 );
 // returns 0
 
-x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
-out = pdf( x );
-// returns [...]
+out = pdf( -1 );
+// returns 0
 
-x = new Int8Array( x );
+x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 out = pdf( x );
-// returns Float64Array( [...] )
+// returns [ 0, 0.8, 1.6, 1.6, 0.8, 0 ]
+
+x = new Float64Array( x );
+out = pdf( x );
+// returns Float64Array( [0,0.8,1.6,1.6,0.8,0] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i * 0.5;
+	x[ i ] = i / 6;
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[ 0  0.5
-	  1  1.5
-	  2  2.5 ]
+	[ 0  1/6
+	 2/6 3/6
+	 4/6 5/6 ]
 */
 
 out = pdf( mat );
 /*
-	[
-
-	   ]
+	[  0   ~0.667
+	  ~1.33 2
+	  ~1.33 ~0.667 ]
 */
 ```
 
@@ -83,17 +86,17 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Triangular](https://en.wikipedia.org/wiki/Triangular_distribution) distribution is a function of 3 parameter(s): `a`(lower limit) and `b`(upper limit) and `c`(mode). By default, `a` is equal to `0` and `b` is equal to `1` and `c` is equal to `0.5`. To adjust either parameter, set the corresponding option(s).
+A [Triangular](https://en.wikipedia.org/wiki/Triangular_distribution) distribution is a function of 3 parameters: `a`(lower limit), `b`(upper limit) and `c`(mode). By default, `a` is equal to `0` and `b` is equal to `1` and `c` is equal to `0.5`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 0.5, 1, 1.5, 2, 2.5 ];
 
 var out = pdf( x, {
-	'a': 6,
-	'b': 0,
-	'c': 6
+	'a': 1,
+	'b': 3,
+	'c': 2
 });
-// returns [...]
+// returns [ 0, 0, 0, 0.5, 1, 0.5 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -101,11 +104,11 @@ For non-numeric `arrays`, provide an accessor `function` for accessing `array` v
 ``` javascript
 var data = [
 	[0,0],
-	[1,0.5],
-	[2,1],
-	[3,1.5],
-	[4,2],
-	[5,2.5]
+	[1,0.2],
+	[2,0.4],
+	[3,0.6],
+	[4,0.8],
+	[5,1]
 ];
 
 function getValue( d, i ) {
@@ -115,7 +118,7 @@ function getValue( d, i ) {
 var out = pdf( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ 0, 0.8, 1.6, 1.6, 0.8, 0 ]
 ```
 
 
@@ -124,11 +127,11 @@ To [deepset](https://github.com/kgryte/utils-deep-set) an object `array`, provid
 ``` javascript
 var data = [
 	{'x':[0,0]},
-	{'x':[1,0.5]},
-	{'x':[2,1]},
-	{'x':[3,1.5]},
-	{'x':[4,2]},
-	{'x':[5,2.5]}
+	{'x':[1,0.2]},
+	{'x':[2,0.4]},
+	{'x':[3,0.6]},
+	{'x':[4,0.8]},
+	{'x':[5,1]}
 ];
 
 var out = pdf( data, {
@@ -137,12 +140,12 @@ var out = pdf( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
-		{'x':[5,]}
+		{'x':[0,0]},
+		{'x':[1,0.8]},
+		{'x':[2,1.6]},
+		{'x':[3,1.6]},
+		{'x':[4,0.8]},
+		{'x':[5,0]}
 	]
 */
 
@@ -155,18 +158,18 @@ By default, when provided a [`typed array`](https://developer.mozilla.org/en-US/
 ``` javascript
 var x, out;
 
-x = new Int8Array( [0,1,2,3,4] );
+x = new Float64Array( [0,0.2,0.4,0.6,0.8,1 ] );
 
 out = pdf( x, {
 	'dtype': 'int32'
 });
-// returns Int32Array( [...] )
+// returns Int32Array( [0,0,1,1,0,0] )
 
 // Works for plain arrays, as well...
-out = pdf( [0,0.5,1,1.5,2], {
+out = pdf( [ 0, 0.2, 0.4, 0.6, 0.8, 1 ], {
 	'dtype': 'uint8'
 });
-// returns Uint8Array( [...] )
+// returns Uint8Array( [0,0,1,1,0,0] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -178,34 +181,34 @@ var bool,
 	x,
 	i;
 
-x = [ 0, 0.5, 1, 1.5, 2 ];
+x = [ 0, 0.2, 0.4, 0.6, 0.8, 1 ];
 
 out = pdf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ 0, 0.8, 1.6, 1.6, 0.8, 0 ]
 
 bool = ( x === out );
 // returns true
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
-	x[ i ] = i * 0.5;
+	x[ i ] = i / 6;
 }
 mat = matrix( x, [3,2], 'float32' );
 /*
-	[ 0  0.5
-	  1  1.5
-	  2  2.5 ]
+	[ 0  1/6
+	 2/6 3/6
+	 4/6 5/6 ]
 */
 
 out = pdf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[  0   ~0.667
+	  ~1.33 2
+	  ~1.33 ~0.667 ]
 */
 
 bool = ( mat === out );
@@ -285,7 +288,7 @@ var data,
 // Plain arrays...
 data = new Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i * 0.5;
+	data[ i ] = Math.random();
 }
 out = pdf( data );
 
@@ -316,7 +319,7 @@ out = pdf( data, {
 // Typed arrays...
 data = new Float32Array( 10 );
 for ( i = 0; i < data.length; i++ ) {
-	data[ i ] = i * 0.5;
+	data[ i ] = Math.random();
 }
 out = pdf( data );
 
