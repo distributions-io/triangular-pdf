@@ -20,7 +20,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/compute-io/triangular-pdf.git"
+    "url": "git://github.com/distributions-io/triangular-pdf.git"
   },
   "keywords": [
     "distributions.io",
@@ -33,7 +33,7 @@
     "continuous"
   ],
   "bugs": {
-    "url": "https://github.com/compute-io/triangular-pdf/issues"
+    "url": "https://github.com/distributions-io/triangular-pdf/issues"
   },
   "dependencies": {
     "compute-array-constructors": "^1.0.0",
