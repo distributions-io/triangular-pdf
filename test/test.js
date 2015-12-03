@@ -132,17 +132,14 @@ describe( 'distributions-triangular-pdf', function tests() {
 			data = validationData.data,
 			expected = validationData.expected.map( function( d ) {
 				return d === 'Inf' ? Infinity : d;
-			}),
-			a = validationData.a,
-		b = validationData.b,
-		c = validationData.c;
+			});
 
 			var actual;
 			for ( var i = 0; i < data.length; i++ ) {
 				actual =  pdf( data[ i ], {
 					'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+					'b': validationData.b,
+					'c': validationData.c
 				});
 				if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
 					assert.closeTo( actual, expected[ i ] , 1e-14 );
@@ -166,8 +163,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 
 		actual = pdf( data, {
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.notEqual( actual, data );
 
@@ -180,8 +177,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		actual = pdf( data, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.strictEqual( actual, data );
 
@@ -207,8 +204,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 
 		actual = pdf( data, {
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.notEqual( actual, data );
 
@@ -222,8 +219,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		actual = pdf( data, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		expected = new Float32Array( validationData.expected.map( function( d ) {
 			return d === 'Inf' ? Infinity : d;
@@ -253,8 +250,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		actual = pdf( data, {
 			'dtype': 'float32',
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 
 		assert.notEqual( actual, data );
@@ -285,8 +282,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		actual = pdf( data, {
 			'accessor': getValue,
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.notEqual( actual, data );
 
@@ -301,8 +298,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 			'accessor': getValue,
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.strictEqual( actual, data );
 
@@ -331,8 +328,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		actual = pdf( data, {
 			'path': 'x.1',
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 
 		expected = validationData.expected
@@ -359,8 +356,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 			'path': 'x/1',
 			'sep': '/',
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.strictEqual( actual, data );
 
@@ -387,8 +384,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		mat = matrix( d1, [5,5], 'float64' );
 		out = pdf( mat, {
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 
 		for ( i = 0; i < out.length; i++ ) {
@@ -401,8 +398,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		out = pdf( mat, {
 			'copy': false,
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 		assert.strictEqual( mat, out );
 
@@ -428,8 +425,8 @@ describe( 'distributions-triangular-pdf', function tests() {
 		out = pdf( mat, {
 			'dtype': 'float32',
 			'a': validationData.a,
-		'b': validationData.b,
-		'c': validationData.c
+			'b': validationData.b,
+			'c': validationData.c
 		});
 
 		assert.strictEqual( out.dtype, 'float32' );

@@ -25,10 +25,12 @@
   "keywords": [
     "distributions.io",
     "distributions",
+    "distribution",
     "probability",
     "statistics",
     "stats",
-    "pdf"
+    "pdf",
+    "continuous"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/triangular-pdf/issues"
