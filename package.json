@@ -1,6 +1,6 @@
 {
   "name": "distributions-triangular-pdf",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Triangular distribution probability density function (PDF)",
   "author": {
     "name": "Philipp Burckhardt",
